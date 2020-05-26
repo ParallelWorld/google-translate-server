@@ -1,9 +1,13 @@
 const translate = require("google-translate-cn-api");
 const stdio = require("stdio");
 const express = require("express");
+const bodyParser = require('body-parser');
 const date = require("date-and-time");
 
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }))
+
 const ops = stdio.getopt({
   port: { key: "p", args: 1, description: "running port", default: 30031 },
   domain: {
