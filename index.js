@@ -30,7 +30,7 @@ function log(req, text, status) {
 }
 
 // express server
-app.get("/", function (req, res) {
+app.post("/", function (req, res) {
   const text = req.body.text;
   delete req.query.text;
 
