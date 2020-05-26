@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const date = require("date-and-time");
 
 const app = express();
-
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 
 const ops = stdio.getopt({
@@ -40,6 +40,7 @@ app.get("/hello", function (req, res) {
 // express server
 app.all("/", function (req, res) {
   const text = req.body.text;
+  console.log("body text=" + text);
   delete req.query.text;
 
   translate(text, { ...{ domain: domain }, ...req.query })
@@ -50,9 +51,9 @@ app.all("/", function (req, res) {
 app.listen(port, function () {
   console.log(
     "\n   ___ _____   ___\n" +
-      "  / __|_   _| / __| ___ _ ___ _____ _ _\n" +
-      " | (_ | | |   \\__ \\/ -_) '_\\ V / -_) '_|\n" +
-      "  \\___| |_|   |___/\\___|_|  \\_/\\___|_|\n\n"
+    "  / __|_   _| / __| ___ _ ___ _____ _ _\n" +
+    " | (_ | | |   \\__ \\/ -_) '_\\ V / -_) '_|\n" +
+    "  \\___| |_|   |___/\\___|_|  \\_/\\___|_|\n\n"
   );
   console.log(`App listening on port ${port}!`);
   console.log(
