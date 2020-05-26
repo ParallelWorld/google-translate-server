@@ -31,7 +31,7 @@ function log(req, text, status) {
 
 // express server
 app.get("/", function (req, res) {
-  const text = req.query.text;
+  const text = req.body.text;
   delete req.query.text;
 
   translate(text, { ...{ domain: domain }, ...req.query })
