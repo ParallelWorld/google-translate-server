@@ -33,6 +33,10 @@ function log(req, text, status) {
   console.log(`${now} [${ip}] ${status}  "${text}"  ${params}`);
 }
 
+app.get("/hello", function (req, res) {
+  res.send('hello');
+});
+
 // express server
 app.get("/", function (req, res) {
   const text = req.body.text;
