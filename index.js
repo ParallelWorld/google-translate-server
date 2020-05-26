@@ -38,17 +38,7 @@ app.get("/hello", function (req, res) {
 });
 
 // express server
-app.get("/", function (req, res) {
-  const text = req.body.text;
-  delete req.query.text;
-
-  translate(text, { ...{ domain: domain }, ...req.query })
-    .then((resp) => res.json(resp) && log(req, text, 200))
-    .catch((resp) => res.status(400).json(resp) && log(req, text, 400));
-});
-
-// express server
-app.post("/", function (req, res) {
+app.all("/", function (req, res) {
   const text = req.body.text;
   delete req.query.text;
 
